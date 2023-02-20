@@ -58,8 +58,9 @@ class Server:
         """
         total_pages = math.ceil(Server.LINE_COUNT / page_size)
         data = self.get_page(page, page_size)
+        pages = len(data)
 
-        return {'page_size': page_size if page_size <= len(data) else len(data),
+        return {'page_size': page_size if page_size <= pages else pages,
                 'page': page,
                 'data': data,
                 'next_page': page + 1 if page + 1 <= total_pages else None,
