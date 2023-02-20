@@ -66,10 +66,10 @@ class Server:
             prev_page = page - 1
             next_page = page + 1
             size = page_size
-        elif page == 1:
+        elif page == 1 and data != []:
             next_page = page + 1
             size = page_size
-        elif data == []:
+        elif page > 1 and data == []:
             prev_page = page - 1
 
         return {'page_size': size,
