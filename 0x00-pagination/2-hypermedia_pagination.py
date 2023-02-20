@@ -18,7 +18,7 @@ class Server:
     LINE_COUNT = 19418
 
     def __init__(self) -> None:
-        self.__dataset = None
+        self.__dataset: Union[List[List], None] = None
 
     def dataset(self) -> List[List]:
         """Cached dataset."""
@@ -26,7 +26,7 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset: List[List] = dataset[1:]
+            self.__dataset = dataset[1:]
 
         return self.__dataset
 
