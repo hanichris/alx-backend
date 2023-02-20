@@ -57,20 +57,19 @@ class Server:
             dict: contains additional information about the returned page.
         """
         total_pages = math.ceil(Server.LINE_COUNT / page_size)
-        prev_page = None
-        next_page = None
-        size = 0
-
         data = self.get_page(page, page_size)
-        if page > 1 and data != []:
-            prev_page = page - 1
+        
+        if page > 1:
+            prev_page = page + 1
+        else:
+            prev_page = None
+
+        if page < total_pages:
             next_page = page + 1
-            size = page_size
-        elif page == 1 and data != []:
-            next_page = page + 1
-            size = page_size
-        elif page > 1 and data == []:
-            prev_page = page - 1
+        else:
+            next_page = None
+
+        size = page_size if data != [] else 0
 
         return {'page_size': size,
                 'page': page,
