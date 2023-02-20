@@ -43,4 +43,5 @@ class Server:
         assert page > 0
         assert page_size > 0
         start_index, end_index = index_range(page, page_size)
-        return self.__dataset[start_index: end_index]
+
+        return self.dataset()[start_index: end_index]
