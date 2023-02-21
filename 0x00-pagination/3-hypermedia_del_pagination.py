@@ -52,15 +52,15 @@ class Server:
         assert _data.get(index) is not None
 
         data = []
-        j = index
+        next_index = index
         while len(data) < page_size:
-            if j in _data:
-                data.append(_data.get(j))
-            j += 1
+            if next_index in _data:
+                data.append(_data.get(next_index))
+            next_index += 1
 
         return {
             'index': index,
-            'next_index': j,
+            'next_index': next_index,
             'page_size': page_size,
             'data': data
         }
