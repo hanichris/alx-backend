@@ -49,7 +49,7 @@ class Server:
             dict: contains additional information about the returned page.
         """
         _data = self.indexed_dataset()
-        assert _data.get(index) is not None
+        assert -1 < index < len(_data)
 
         data = []
         next_index = index
