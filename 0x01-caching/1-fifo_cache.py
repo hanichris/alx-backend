@@ -38,6 +38,7 @@ class FIFOCache(BaseCaching):
             del self.__key_order[0]
 
         self.cache_data[key] = item
+        self.__key_order.append(key)
 
     def get(self, key: Optional[str]) -> Union[str, None]:
         """Return the value stored at the given key index.
