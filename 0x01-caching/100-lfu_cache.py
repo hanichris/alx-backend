@@ -43,7 +43,6 @@ class LFUCache(BaseCaching):
         self.cache_data[key] = item
         self.freq[key] = self.freq.get(key, 0) + 1
 
-
     def get(self, key: Optional[str]) -> Union[str, None]:
         """Return the value stored at the given key index.
 
