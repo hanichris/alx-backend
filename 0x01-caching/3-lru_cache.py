@@ -52,6 +52,8 @@ class LRUCache(BaseCaching):
         Return:
             str: value stored at the given key.
         """
-        if key is None:
-            return None
-        return self.cache_data.get(key)
+        if key is not None and key in self.age.keys():
+            self.age[key] = self.count
+            self.count += 1
+            return self.cache_data.get(key)
+        return None
