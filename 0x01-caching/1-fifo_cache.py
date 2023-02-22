@@ -23,14 +23,15 @@ class FIFOCache(BaseCaching):
             key: index of the item to be added.
             item: the value to be added at the given index.
         """
+        if key is None or item is None:
+            return
+
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
             first = next(iter(self.cache_data))
             self.cache_data.pop(first, None)
             print(f"DISCARD: {first}")
 
-        if key is None or item is None:
-            return
         self.cache_data[key] = item
 
     def get(self, key: Optional[str]) -> Union[str, None]:

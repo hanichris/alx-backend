@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Implementation of the LIFO cache.
 
-This cache behaves like the FIFO queue. Blocks are
-evicted in the order that they were added without
+This cache behaves like a stack. Blocks are
+evicted in the order that they were last added without
 regard to anything.
 """
 from typing import Optional, Union
@@ -12,7 +12,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """Implements the FIFO cache."""
+    """Implements the LIFO cache."""
 
     def put(self, key: Optional[str], item: Optional[str]) -> None:
         """Add an item to the cache as in a LIFO queue.
@@ -23,12 +23,13 @@ class LIFOCache(BaseCaching):
             key: index of the item to be added.
             item: the value to be added at the given index.
         """
+        if key is None or item is None:
+            return
+
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
             print(f"DISCARD: {self.cache_data.popitem()[0]}")
 
-        if key is None or item is None:
-            return
         self.cache_data[key] = item
 
     def get(self, key: Optional[str]) -> Union[str, None]:
