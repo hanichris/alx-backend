@@ -23,7 +23,7 @@ class FIFOCache(BasicCache):
             key: index of the item to be added.
             item: the value to be added at the given index.
         """
-        if len(self.cache_data) > self.MAX_ITEMS:
+        if len(self.cache_data) >= self.MAX_ITEMS:
             first = next(iter(self.cache_data))
             self.cache_data.pop(first, None)
             print(f"DISCARD: {first}")
