@@ -34,8 +34,8 @@ class MRUCache(BaseCaching):
 
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
-            max = max(self.age.values())
-            _key = list(filter(lambda x: self.age[x] == max, self.age))[0]
+            largest = max(self.age.values())
+            _key = list(filter(lambda x: self.age[x] == largest, self.age))[0]
             print(f"DISCARD: {_key}")
             self.cache_data.pop(_key, None)
             self.age.pop(_key, None)
