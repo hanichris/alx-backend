@@ -14,6 +14,11 @@ BaseCaching = __import__('base_caching').BaseCaching
 class FIFOCache(BaseCaching):
     """Implements the FIFO cache."""
 
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.__key_order = []
+
     def put(self, key: Optional[str], item: Optional[str]) -> None:
         """Add an item to the cache as in a FIFO queue.
 
@@ -28,9 +33,9 @@ class FIFOCache(BaseCaching):
 
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
-            first = next(iter(self.cache_data))
-            self.cache_data.pop(first, None)
-            print(f"DISCARD: {first}")
+            print(f"DISCARD: {self.__key_order[0]}")
+            self.cache_data.pop(self.__key_order[0], None)
+            del self.__key_order[0]
 
         self.cache_data[key] = item
 
