@@ -25,7 +25,8 @@ class FIFOCache(BasicCache):
         """
         if len(self.cache_data) > self.MAX_ITEMS:
             first = next(iter(self.cache_data))
-            print(f"DISCARD: {self.cache_data.pop(first, None)}")
+            self.cache_data.pop(first, None)
+            print(f"DISCARD: {first}")
 
         if key is None or item is None:
             return
