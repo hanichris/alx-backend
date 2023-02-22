@@ -14,6 +14,11 @@ BaseCaching = __import__('base_caching').BaseCaching
 class LIFOCache(BaseCaching):
     """Implements the LIFO cache."""
 
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.__key_order = []
+
     def put(self, key: Optional[str], item: Optional[str]) -> None:
         """Add an item to the cache as in a LIFO queue.
 
@@ -28,9 +33,12 @@ class LIFOCache(BaseCaching):
 
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
-            print(f"DISCARD: {self.cache_data.popitem()[0]}")
+            print(f"DISCARD: {self.__key_order[-1]}")
+            self.cache_data.pop(self.__key_order[-1], None)
+            del self.__key_order[-1]
 
         self.cache_data[key] = item
+        self.__key_order.append(key)
 
     def get(self, key: Optional[str]) -> Union[str, None]:
         """Return the value stored at the given key index.
