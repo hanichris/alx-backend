@@ -39,7 +39,7 @@ class LRUCache(BaseCaching):
             print(f"DISCARD: {_key}")
             self.cache_data.pop(_key, None)
             self.age.pop(_key, None)
-        
+
         self.cache_data[key] = item
         self.age[key] = self.count
         self.count += 1
