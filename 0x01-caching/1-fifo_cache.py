@@ -8,10 +8,10 @@ regard to anything.
 from typing import Optional, Union
 
 
-BasicCache = __import__('0-basic_cache').BasicCache
+BaseCaching = __import__('base_caching').BaseCaching
 
 
-class FIFOCache(BasicCache):
+class FIFOCache(BaseCaching):
     """Implements the FIFO cache."""
 
     def put(self, key: Optional[str], item: Optional[str]) -> None:
