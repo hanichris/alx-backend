@@ -35,10 +35,10 @@ class LFUCache(BaseCaching):
         if key not in self.cache_data and\
            len(self.cache_data) >= self.MAX_ITEMS:
             least = min(self.freq.values())
-            _key = list(filter(lambda x: self.age[x] == least, self.age))[0]
+            _key = list(filter(lambda x: self.freq[x] == least, self.freq))[0]
             print(f"DISCARD: {_key}")
             self.cache_data.pop(_key, None)
-            self.age.pop(_key, None)
+            self.freq.pop(_key, None)
 
         self.cache_data[key] = item
         self.freq[key] = self.freq.get(key, 0) + 1
@@ -51,7 +51,7 @@ class LFUCache(BaseCaching):
         Return:
             str: value stored at the given key.
         """
-        if key is not None and key in self.age.keys():
+        if key is not None and key in self.freq.keys():
             self.freq[key] = self.freq.get(key, 0) + 1
             return self.cache_data.get(key)
         return None
