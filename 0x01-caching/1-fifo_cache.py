@@ -48,6 +48,4 @@ class FIFOCache(BaseCaching):
         Return:
             str: value stored at the given key.
         """
-        if key is None:
-            return None
         return self.cache_data.get(key)

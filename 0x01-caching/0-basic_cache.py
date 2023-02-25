@@ -26,6 +26,4 @@ class BasicCache(BaseCaching):
         Args:
             key: index to query.
         """
-        if key is None:
-            return None
         return self.cache_data.get(key)
