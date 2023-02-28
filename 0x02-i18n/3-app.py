@@ -28,4 +28,4 @@ def index():
 
     First page served to the user of the application.
     """
-    return render_template('2-index.html')
+    return render_template('3-index.html')
