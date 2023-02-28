@@ -34,7 +34,10 @@ def get_locale():
 
 
 def get_user():
-    """Return a user dictionary or None if absent."""
+    """
+    Returns a user dictionary or None if ID value can't be found
+    or if 'login_as' URL parameter was not found.
+    """
     user_id = request.args.get('login_as')
     try:
         user_id = int(user_id)
