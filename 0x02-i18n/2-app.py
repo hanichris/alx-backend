@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Using the `flask-babel` extension."""
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
@@ -14,6 +14,12 @@ class Config:
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
+
+
+@babel.localeselector
+def get_locale():
+    """Select a language translation to use for a request."""
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/', strict_slashes=False)
