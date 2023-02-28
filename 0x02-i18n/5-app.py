@@ -43,6 +43,8 @@ def get_user():
         user_id = int(user_id)
     except ValueError:
         print("Please use a valid literal for int() with base 10")
+    except TypeError:
+        print("int() argument must be a string.")
     return users.get(user_id)
 
 
