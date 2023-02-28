@@ -18,4 +18,8 @@ babel = Babel(app)
 
 @app.route('/', strict_slashes=False)
 def index():
+    """Home page of the application.
+
+    First page served to the user of the application.
+    """
     return render_template('1-index.html')
