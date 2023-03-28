@@ -14,3 +14,13 @@ client.on('connect', () => {
 function setNewSchool(schoolName, value) {
   client.set(schoolName, value, redis.print);
 }
+
+function displaySchoolValue(schoolName) {
+  client.get(schoolName, (err, reply) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(reply);
+    }
+  });
+}
