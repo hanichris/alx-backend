@@ -21,6 +21,6 @@ async function displaySchoolValue(schoolName) {
   console.log(value);
 }
 
-displaySchoolValue('Holberton').catch((err) => console.log(err));
+displaySchoolValue('Holberton').catch((err) => console.log(`Error occurred!!!`));
 setNewSchool('HolbertonSanFrancisco', '100');
-displaySchoolValue('HolbertonSanFrancisco').catch((err) => console.log(err));
+displaySchoolValue('HolbertonSanFrancisco').catch((err) => console.log(`Error occurred!!!`));
