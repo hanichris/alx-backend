@@ -1,6 +1,6 @@
-import { createClient } from 'redis';
+import * as redis from 'redis';
 
-const client = createClient();
+const client = redis.createClient();
 
 client.on('error', (err) => {
   console.log(`Redis client not connected to the server: ${err}`);
