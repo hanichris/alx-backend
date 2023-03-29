@@ -12,11 +12,14 @@ publisher.on('connect', () => {
 
 const channel = 'holberton school channel';
 
-function publishMessage(message, time) {
-  setTimeout(() => {
-    console.log(`About to send ${message}`);
-    publisher.publish(channel, message);
-  }, time);
+async function publishMessage(message, time) {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`About to send ${message}`);
+      publisher.publish(channel, message);
+      resolve();
+    }, time);
+  });
 }
 
 publishMessage('Holberton Student #1 starts course', 100);
